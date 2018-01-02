@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">USB串口</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string name="action_setting">更改波特率</string>
+    <string name="action_about">关于</string>
+    <string name="action_exit">退出</string>
+    <string name="serial_port">接收区</string>
+
+</resources>
