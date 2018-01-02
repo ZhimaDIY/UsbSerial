@@ -2,9 +2,9 @@ UsbSerial [![](https://jitpack.io/v/felHR85/UsbSerial.svg)](https://jitpack.io/#
 =========
 Android手机的USB串口收发器. 获取更多信息请点击这里 [a more complete description](http://felhr85.net/2014/11/11/usbserial-a-serial-port-driver-library-for-android-v2-0/).
 
-[A brief list of Apps and projects using UsbSerial](http://felhr85.net/2016/03/19/apps-and-projects-using-usbserial/)
+[使用UsbSerial库的APP列表](http://felhr85.net/2016/03/19/apps-and-projects-using-usbserial/)
 
-Devices Supported
+支持的芯片
 --------------------------------------
 [CP210X devices](http://www.silabs.com/products/mcu/pages/usbtouartbridgevcpdrivers.aspx) Default: 9600,8,1,None,flow off
 
@@ -18,9 +18,9 @@ Devices Supported
 
 [CP2130 SPI-USB](http://www.silabs.com/products/interface/usb-bridges/classic-usb-bridges/Pages/usb-to-spi-bridge.aspx)
 
-How to use it?
+如何使用?
 --------------------------------------
-Instantiate a new object of the UsbSerialDevice class
+新建一个UsbSerialDevice对象
 ```java
 UsbDevice device;
 UsbDeviceConnection usbConnection;
@@ -28,7 +28,7 @@ UsbDeviceConnection usbConnection;
 UsbSerialDevice serial = UsbSerialDevice.createUsbSerialDevice(device, usbConnection); 
 ```
 
-Open the device and set it up as desired
+打开设备并使用它
 ```java
 serial.open();
 serial.setBaudRate(115200);
@@ -37,7 +37,7 @@ serial.setParity(UsbSerialInterface.PARITY_ODD);
 serial.setFlowControl(UsbSerialInterface.FLOW_CONTROL_OFF); 
 ```
 
-If flow control is needed (currently only supported in CP201x and FTDI devices)
+如果需要流控(目前仅支持CP201x和FTDI设备)
 ```java
 /**
 Values:
