@@ -1,7 +1,6 @@
 Based on [UsbSerial](https://github.com/felHR85/UsbSerial)
 =========
 Android手机的USB串口收发器. 获取更多信息请点击这里 [a more complete description](http://felhr85.net/2014/11/11/usbserial-a-serial-port-driver-library-for-android-v2-0/).
-
 [使用UsbSerial库的APP列表](http://felhr85.net/2016/03/19/apps-and-projects-using-usbserial/)
 
 支持的芯片
