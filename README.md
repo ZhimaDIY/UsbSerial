@@ -65,7 +65,7 @@ private UsbSerialInterface.UsbReadCallback mCallback = new UsbSerialInterface.Us
 serial.read(mCallback);
 ```
 
-CTS and DSR lines的改变 will be received in the same manner. Define a callback and pass a reference of it.
+Changes in CTS and DSR lines will be received in the same manner. Define a callback and pass a reference of it.
 ```java
 private UsbSerialInterface.UsbCTSCallback ctsCallback = new UsbSerialInterface.UsbCTSCallback() {
         @Override
