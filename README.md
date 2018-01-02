@@ -1,4 +1,4 @@
-UsbSerial [![](https://jitpack.io/v/felHR85/UsbSerial.svg)](https://jitpack.io/#felHR85/UsbSerial) [![AndroidArsenal](https://img.shields.io/badge/Android%20Arsenal-UsbSerial-green.svg?style=true)](https://android-arsenal.com/details/1/4162) [![Join the chat at https://gitter.im/UsbSerial/Lobby](https://badges.gitter.im/UsbSerial/Lobby.svg)](https://gitter.im/UsbSerial/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+Based on [UsbSerial](https://github.com/felHR85/UsbSerial)
 =========
 Android手机的USB串口收发器. 获取更多信息请点击这里 [a more complete description](http://felhr85.net/2014/11/11/usbserial-a-serial-port-driver-library-for-android-v2-0/).
 
@@ -48,7 +48,7 @@ Values:
 serial.setFlowControl(UsbSerialInterface.FLOW_CONTROL_RTS_CTS);
 ```
 
-There is no need to be polling if you want to perform a bulk transaction to a IN endpoint. Define a simply callback
+如果想处理批量的事务到 IN 端则不需要轮询. 定义一个简单的callback
 ```java
 private UsbSerialInterface.UsbReadCallback mCallback = new UsbSerialInterface.UsbReadCallback() {
 
@@ -61,12 +61,12 @@ private UsbSerialInterface.UsbReadCallback mCallback = new UsbSerialInterface.Us
 };
 ```
 
-And pass a reference of it
+可以参考：
 ```java
 serial.read(mCallback);
 ```
 
-Changes in the CTS and DSR lines will be received in the same manner. Define a callback and pass a reference of it.
+CTS and DSR lines的改变 will be received in the same manner. Define a callback and pass a reference of it.
 ```java
 private UsbSerialInterface.UsbCTSCallback ctsCallback = new UsbSerialInterface.UsbCTSCallback() {
         @Override
@@ -88,7 +88,7 @@ serial.getCTS(ctsCallback);
 
 
 
-Write something
+写：
 ```java
 serial.write("DATA".getBytes()); // Async-like operation now! :)
 ```
@@ -101,12 +101,12 @@ serial.setDTR(true); // Raised
 serial.setDTR(false); // Not Raised
 ```
 
-Close the device:
+关闭设备:
 ```java
 serial.close();
 ```
 
-I recommend using UsbSerial as shown above but if you want to perform write and read operations in synchronous way it is possible using these methods:
+推荐像如上所示的那样使用UsbSerial，但是如果你想以同步的方式执行写和读操作，可以使用这些方法:
 ```java
 public boolean syncOpen();
 public int syncWrite(byte[] buffer, int timeout)
@@ -115,16 +115,16 @@ public void syncClose();
 ```
 
 
-In Android usb api, when a usb device has been close it must be reopened
+Android usb api, 当usb关闭的时候一定要重新打开
 ```java
 UsbDevice device;
 ...
 UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
 manager.openDevice(UsbDevice device)
 ```
-How to use the SPI interface (BETA)
+如何使用SPI接口 (BETA)
 --------------------------------------
-Support for USB to SPI devices was added recently but it is still in beta. Although I tried to keep the api as close to standard UsbSerial api as possible, be aware because the beta nature of this feature this api may change in the future. Only CP2130 chipset is supported at the moment.
+最近增加了对USB到SPI设备的支持，但仍处于测试阶段。 目前仅支持CP2130芯片。
 
 ```java
 UsbSpiDevice spi = UsbSpiDevice.createUsbSerialDevice(device, connection);
@@ -132,7 +132,7 @@ spi.connectSPI();
 spi.selectSlave(0);
 spi.setClock(CP2130SpiDevice.CLOCK_3MHz);
 ```
-Define the usual callback
+定义一个 callback
 
 ```java
 private UsbSpiInterface.UsbMISOCallback misoCallback = new UsbSpiInterface.UsbMISOCallback()
@@ -152,15 +152,14 @@ spi.readMISO(5); // Read 5 bytes from the MISO (MASTER INPUT SLAVE OUTPUT) line.
 spi.writeRead("Hola!".getBytes(), 15); // Write "Hola!" and read 15 bytes synchronously
 ```
 
-Close the device when done
-
+关闭设备
 ```java
 spi.closeSPI();
 ```
 
 Gradle
 --------------------------------------
-Add the jitpack repo to your your project's build.gradle at the end of repositories
+添加jitpack repo 到你的项目build.gradle文件的repositories结尾
 
 /build.gradle
 ```groovy
@@ -172,19 +171,10 @@ allprojects {
 }
 ```
 
-Then add the dependency to your module's build.gradle:
+添加dependency到你的build.gradle:
 
 /app/build.gradle
 ```groovy
 compile 'com.github.felHR85:UsbSerial:4.5'
 ```
-
-TO-DO
---------------------------------------
-- RTS/CTS and DSR/DTR implementations for PL2303 and CDC
-
-
-
-
-
 
